@@ -1,29 +1,65 @@
 import React, { useEffect, useState } from "react";
 import Cards from "../components/Cards";
 import API from "../utils/API";
+import SearchForm from "../components/SearchForm";
+import axios from "axios";
 
 const Home = () => {
   const [people, setPeople] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     API.getPeople()
       .then((res) => {
-        console.log(res.data.results);
+        // console.log(res.data.results);
         setPeople(res.data.results);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+  const handleInputChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    axios.get("https://swapi.dev/api/people/").then((res) => {
+      const people = res.data.results;
+      const slicedArray = people.slice(0, search);
+      setPeople(slicedArray);
+     
+    });
+  };
   return (
     <>
-      
       <div className="container">
         <h1 className="justify-content-center">Hypersearch</h1>
-        <h6 className="justify-content-center">A hyper fast search engine for hyperspace</h6>
+        <h6 className="justify-content-center">
+          A hyper fast search engine for hyperspace
+        </h6>
+        {/* <SearchForm handleInputChange={handleInputChange} result={search} onSubmit={handleFormSubmit}/> */}
+        <form onSubmit={handleFormSubmit}>
+          <div className="mb-3">
+            <input
+              value={search}
+              onChange={handleInputChange}
+              list="term"
+              type="text"
+              className="form-control"
+              id="term"
+              aria-describedby="form"
+              placeholder="Please enter a number between 1-10"
+            />
+          </div>
+
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </form>
         <div className="row">
-            
-            {/* used index for the unique ID */}
+          {/* used index for the unique ID */}
           {people.map(function (person, index) {
             return (
               <div className="col-12 col-md-6 col-lg-4" key={index}>
@@ -39,7 +75,6 @@ const Home = () => {
             );
           })}
         </div>
-        
       </div>
     </>
   );
