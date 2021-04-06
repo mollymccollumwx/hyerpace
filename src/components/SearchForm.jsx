@@ -8,19 +8,17 @@ function SearchForm(props) {
           value={props.search}
           onChange={props.handleInputChange}
           list="term"
-          type="text"
+          type="number"
+          
           className="form-control"
           id="term"
           aria-describedby="form"
-          placeholder="Please enter a number between 1-10"
+          placeholder="Enter a number between 1-10 you must"
+          
         />
       </div>
 
-      <button
-        type="submit"
-        className="btn btn-primary"
-        
-      >
+      <button type="submit" className="btn btn-primary">
         Submit
       </button>
     </form>
