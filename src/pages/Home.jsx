@@ -39,25 +39,7 @@ const Home = () => {
         <h6 className="justify-content-center">
           A hyper fast search engine for hyperspace
         </h6>
-        {/* <SearchForm handleInputChange={handleInputChange} result={search} onSubmit={handleFormSubmit}/> */}
-        <form onSubmit={handleFormSubmit}>
-          <div className="mb-3">
-            <input
-              value={search}
-              onChange={handleInputChange}
-              list="term"
-              type="text"
-              className="form-control"
-              id="term"
-              aria-describedby="form"
-              placeholder="Please enter a number between 1-10"
-            />
-          </div>
-
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
+        <SearchForm handleInputChange={handleInputChange} result={search} handleFormSubmit={handleFormSubmit}/>
         <div className="row">
           {/* used index for the unique ID */}
           {people.map(function (person, index) {
