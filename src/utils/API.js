@@ -1,7 +1,11 @@
 import axios from "axios";
 
-export default {
-  getPeople: function () {
+const getPeople =() => {
     return axios.get("https://swapi.dev/api/people/");
-  },
+}
+
+const exportedObject = {
+    getPeople
 };
+
+export default exportedObject
