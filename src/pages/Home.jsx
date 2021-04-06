@@ -8,7 +8,7 @@ const Home = () => {
   useEffect(() => {
     API.getPeople()
       .then((res) => {
-        console.log(res.data.results[0].name);
+        console.log(res.data.results);
         setPeople(res.data.results);
       })
       .catch((err) => {
@@ -17,22 +17,29 @@ const Home = () => {
   }, []);
   return (
     <>
-      <h1>Hyperspace</h1>
-      <div>
-        {people.map(function (person, index) {
-          return (
-            <div key={index}>
-              {" "}
-              <Cards
-                name={person.name}
-                homeworld={person.homeworld}
-                birthYear={person.birth_year}
-                hairColor={person.hair_color}
-                skinColor={person.skin_color}
-              />
-            </div>
-          );
-        })}
+      
+      <div className="container">
+        <h1 className="justify-content-center">Hypersearch</h1>
+        <h6 className="justify-content-center">A hyper fast search engine for hyperspace</h6>
+        <div className="row">
+            
+            {/* used index for the unique ID */}
+          {people.map(function (person, index) {
+            return (
+              <div className="col-12 col-md-6 col-lg-4" key={index}>
+                <Cards
+                  name={person.name}
+                  gender={person.gender}
+                  birthYear={person.birth_year}
+                  hairColor={person.hair_color}
+                  skinColor={person.skin_color}
+                  eyeColor={person.eye_color}
+                />
+              </div>
+            );
+          })}
+        </div>
+        
       </div>
     </>
   );
