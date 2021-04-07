@@ -3,24 +3,26 @@ import React from "react";
 function SearchForm(props) {
   return (
     <form onSubmit={props.handleFormSubmit}>
-      <div className="mb-3">
+      <div className="mb-3 input-group">
         <input
           value={props.search}
           onChange={props.handleInputChange}
           list="term"
           type="number"
-          
+          min="1"
+          // max="10"
           className="form-control"
           id="term"
           aria-describedby="form"
-          placeholder="Enter a number between 1-10 you must"
+          placeholder="Enter a number 1-10"
           
         />
-      </div>
-
-      <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-dark">
         Submit
       </button>
+      </div>
+
+      
     </form>
   );
 }

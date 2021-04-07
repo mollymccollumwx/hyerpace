@@ -17,13 +17,13 @@ const Cards = ({
     axios
       .get(homeworld)
       .then((res) => {
-        console.log(res.data.name);
+        // console.log(res.data.name);
         setHomeworld(res.data.name);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [homeworld]);
 
   return (
     <>

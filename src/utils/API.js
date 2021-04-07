@@ -4,8 +4,11 @@ const getPeople =() => {
     return axios.get("https://swapi.dev/api/people/");
 }
 
+
+
 const exportedObject = {
-    getPeople
+    getPeople,
+    
 };
 
 export default exportedObject

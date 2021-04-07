@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import Cards from "../components/Cards";
 import API from "../utils/API";
 import SearchForm from "../components/SearchForm";
-import axios from "axios";
+import Hero from "../components/Hero"
+import "./Home.css"
+
+
 
 const Home = () => {
   const [people, setPeople] = useState([]);
@@ -26,7 +29,7 @@ const Home = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const isValid = formValidation();
+    formValidation();
     API.getPeople()
       .then((res) => {
         const people = res.data.results;
@@ -43,42 +46,45 @@ const Home = () => {
     const formError = {};
     let isValid = true;
 
-    if (search === ""){
-        formError.formEmpty = "You must enter a number. This is the way."
-        isValid = false;
-    }
-
-    if (search < 0 || search > 10) {
-        formError.formNumber = "Enter a number between 1-10 you must"
+    if (search <= 0 || search > 10) {
+        formError.formNumber = "Enter a number between 1-10 you must."
         isValid = false;
     }
 
     setFormError(formError);
     return isValid;
   }
+
+
  
   return (
     <>
+    <Hero />
+    <section className="results">
       <div className="container">
-        <h1 className="justify-content-center">Hypersearch</h1>
-        <h6 className="justify-content-center">
-          A Star Wars search engine faster than lightspeed.
-        </h6>
-        <h6>
-          <em>Seriously, we'll make your search in less than 12 parsecs.</em>
-        </h6>
-        <div className="row">
-          <div className="col-4">
+          <div className="row justify-content-center">
+              <div className="col-6 text-center">
+                    <h1>nuuawh!</h1>
+                    <h6>(That's Wookiee for hello.)</h6>
+                    <h6>Use Hypersearch to find your favorite Star Wars characters. Select the number of characters you want displayed by using the form below.</h6>
+              </div>
+          </div>
+        
+        
+        <div className="row justify-content-center">
+          <div className="col-6">
             <SearchForm
               handleInputChange={handleInputChange}
               result={search}
               handleFormSubmit={handleFormSubmit}
             />
-          </div>
+          
           {Object.keys(formError).map((key)=> {
-              return <div style={{color: "red"}}>{formError[key]}</div>
+              return <div className="justify-content-center" style={{color: "red"}}>{formError[key]}</div>
           })}
+          </div>
         </div>
+
 
         <div className="row">
           {/* used index for the unique ID */}
@@ -99,6 +105,7 @@ const Home = () => {
           })}
         </div>
       </div>
+      </section>
     </>
   );
 };
