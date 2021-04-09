@@ -3,6 +3,8 @@
 ## Description
 This application contains a simple Star Wars search feature using React. 
 
+Please visit the [deployed site](https://frosty-mccarthy-056377.netlify.app/) to try out Hypersearch.
+
 ![Landing Page](/public/Assets/Images/Hero.png)
 
 ![Search Feature](/public/Assets/Images/Search.png)
