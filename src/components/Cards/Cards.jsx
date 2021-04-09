@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Cards.css";
 
+// destructured props
 const Cards = ({
   name,
   gender,
@@ -13,6 +14,7 @@ const Cards = ({
 }) => {
   const [homeworldAPI, setHomeworld] = useState("");
 
+  //second API call to SWAPI based on URL provided by response from the first call
   useEffect(() => {
     axios
       .get(homeworld)
@@ -25,12 +27,13 @@ const Cards = ({
       });
   }, [homeworld]);
 
+  // resuable card component
   return (
     <>
-      <div className="card m-3" style={{ width: "18rem" }}>
+      <div className="card m-3 mb-5" style={{ width: "18rem" }}>
         <div className="card-body">
-          <h5 className="card-title">{name}</h5>
-          <h6 className="card-subtitle mb-2 text-muted">{homeworldAPI}</h6>
+          <h5 className="card-title fs-3 fw-bold">{name}</h5>
+          <h6 className="card-subtitle mb-2 text-muted">Homeplanet: {homeworldAPI}</h6>
           <ul>
             <li className="card-text"><strong>Birth Year:</strong> {birthYear}</li>
             <li className="card-text"><strong>Gender:</strong> {gender}</li>
