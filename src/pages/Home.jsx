@@ -89,13 +89,14 @@ const Home = () => {
                 handleFormSubmit={handleFormSubmit}
               />
               {/* form error message */}
-              {Object.keys(formError).map((key) => {
+              {Object.keys(formError).map((key, index) => {
                 return (
-                  <div
+                  <div key = {index}
                     className="justify-content-center"
                     style={{ color: "red" }}
                   >
                     {formError[key]}
+                    
                   </div>
                 );
               })}

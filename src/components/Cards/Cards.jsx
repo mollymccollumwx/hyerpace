@@ -16,8 +16,12 @@ const Cards = ({
 
   //second API call to SWAPI based on URL provided by response from the first call
   useEffect(() => {
+    console.log(homeworld);
+    let correctedURL = homeworld;
+    correctedURL = correctedURL.replace('http', 'https');
+    console.log(correctedURL);
     axios
-      .get(homeworld)
+      .get(correctedURL)
       .then((res) => {
         // console.log(res.data.name);
         setHomeworld(res.data.name);
