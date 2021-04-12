@@ -53,7 +53,7 @@ const Home = () => {
     let isValid = true;
 
     if (search <= 0 || search > 10) {
-      formError.formNumber = "Enter a number between 1-10 you must.";
+      formError.formNumber = "Enter a number between 1-10, you must.";
       isValid = false;
     } 
 
